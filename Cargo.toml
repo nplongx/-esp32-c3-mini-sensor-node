@@ -1,0 +1,37 @@
+[package]
+name = "esp32-c3-mini-node-sensor"
+version = "0.1.0"
+authors = ["nplongx <nplong.dev@gmail.com>"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.82"
+
+[[bin]]
+name = "esp32-c3-mini-node-sensor"
+harness = false                    # do not use the built-in cargo test harness -> resolve rust-analyzer errors
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice, and they don't increase the size on Flash
+opt-level = "z"
+
+[dependencies]
+log = "0.4"
+esp-idf-svc = "0.52.1"
+esp-idf-hal = "0.46.2"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+ds18b20 = "0.1.1"
+one-wire-bus = "0.1.1"
+embedded-hal = "1.0.0"
+shared-bus = "0.3.1"
+ads1x1x = "0.3.0"
+nb = "1.1.0"
+anyhow = "1.0.102"
+embedded-hal-bus = "0.2.0"
+
+
+[build-dependencies]
+embuild = "0.33"
